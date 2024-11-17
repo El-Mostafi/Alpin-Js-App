@@ -1,6 +1,4 @@
-<div>
-
-
+<div >
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
     <div class="pb-4 bg-white dark:bg-gray-900">
         <div class="relative mt-1">
@@ -36,12 +34,31 @@
                     {{$user->email}}
                 </td>
                 <td class="px-6 py-4">
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">View</a>
+                    <button wire:click="viewUser({{$user}})" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">View</button>
                 </td>
             </tr>
             @endforeach
         </tbody>
     </table>
+    @if($selectUser)
+    <x-modal name="user-info" title="">
+        <x-slot:body>
+        <div class="max-w-sm mx-auto bg-white shadow-md rounded-lg overflow-hidden dark:bg-gray-800 mt-5">
+    <div class="px-6 py-4">
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white">{{ $selectUser->name }}</h2>
+        <p class="text-gray-700 dark:text-gray-300">{{ $selectUser->email }}</p>
+    </div>
+    <div class="px-6 py-4">
+        <div class="flex items-center">
+            <span class="text-gray-700 dark:text-gray-300">Joined at: </span>
+            <span class="ml-2 text-gray-900 dark:text-white">{{ $selectUser->created_at->format('M d, Y') }}</span>
+        </div>
+    </div>
+</div>
+
+        </x-slot>
+    </x-modal>
+    @endif
 </div>
 
 <div class="mt-4 w-25 mx-auto"><span>{{$users->links()}}</span></div>

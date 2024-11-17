@@ -6,7 +6,7 @@
 
         <title>{{$title}}</title>
 
-        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://cdn.tailwindcss.com"></script><script src="https://cdn.tailwindcss.com"></script>
         
     </head>
     <body>
